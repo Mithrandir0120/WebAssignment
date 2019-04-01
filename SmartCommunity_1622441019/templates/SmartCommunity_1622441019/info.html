@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+{% load static %}
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'SmartCommunity_1622441019/style_2.css' %}" />
+
+	<title>Smart Community</title>
+</head>
+
+<body>
+	<div id="header">
+			{% include "SmartCommunity_1622441019/header.html" %}
+			<h3> Add location </h3>
+	</div>
+
+	<div id="contentfirst">
+		{% if request.session.logged == 2 %}
+		<form action="/admin/add_info/" method="post" id="loginForm">
+			{% csrf_token %}
+			{{ form.as_table }}
+			<input type="submit" value="add"/>
+
+		</form>
+		{% else %}
+		You need to be an administrator to view this page.
+		{% endif %}
+	</div>
+
+	{% include "SmartCommunity_1622441019/footer.html" %}
+</body>
+</html>

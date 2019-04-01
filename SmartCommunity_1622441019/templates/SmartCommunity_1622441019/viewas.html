@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+<head>
+    <style type="text/css">
+        select.choice {background-color:#4C586F}
+        select.choice {color:white}
+    </style>
+</head>
+
+<body>
+    <p>
+    <div class="greyselect">
+        <select id = "ViewAs" class="choice">
+            <option value = "" class="choice">View As...</option>
+            <option value = "Admin" class="choice">Admin</option>
+            <option value = "Volunteer" class="choice">Volunteer</option>
+            <option value = "Member" class="choice">Member</option>
+        </select>
+    </div>
+    </p>
+</body>
+<script>
+    document.getElementById("ViewAs").onchange = function() {
+        if (this.selectedIndex!==0) {
+            window.location.href = this.value;
+        }
+    };
+</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'SmartCommunity_1622441019/style_2.css' %}" />
+
+    <title>Smart Community</title>
+</head>
+
+
+<body>
+    <div id="header">
+        <h3>"Account Type" Profile</h3>
+
+    </div>
+    {% include "SmartCommunity_1622441019/header.html" %}
+    <div id="welcome">
+        <a href="result.html"> Recomended </a>
+    </div>
+    <div id="contentfirst">
+        <table>
+            <th>name</th>
+            <th>address</th>
+            <th>city</th>
+            <th>phone number</th>
+            <th>email address</th>
+            <th>Location type</th>
+
+            {% for item in location_info %}
+            <tr>
+                <td><a href="/provider/{{ item.providerID }}">{{ item.name }}</a></td>
+                <td>{{ item.address }}</td>
+                <td>{{ item.city }}</td>
+                <td>{{ item.phonenumber }}</td>
+                <td>{{ item.emailaddress }}</td>
+                <td>{{ item.locationtype }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    {% include "SmartCommunity_1622441019/footer.html" %}
+</body>
+</html>

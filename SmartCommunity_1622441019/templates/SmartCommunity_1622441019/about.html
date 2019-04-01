@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+{% load static %}
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'SmartCommunity_1622441019/style_2.css' %}" />
+
+	<title>Smart Community</title>
+</head>
+
+<body>
+ 	<div id="header">
+			{% include "SmartCommunity_1622441019/header.html" %}
+			<h3> About </h3>
+	</div>
+	<div id="contentfirst">
+		<p>
+			A local migrant community group in Brisbane has many members who work odd hours,
+			lack proper English skills. Due to these issues, they often struggle to find and
+			negotiate with service providers such as plumbers, electrician, car repairs, air
+			conditioning, building work etc. to fix the service issues in their homes. To help
+			their members the community group offers help to fix the members’ service issues
+			by contacting the service provider on the members’ behalf, negotiate a better price,
+			and allocate the job on preferred day(date) and time as reported by the member.
+		</p>
+        <p>
+            The community group has few dedicated volunteers who help their members by operating
+            different times of the day/evening from the community building office. A member calls
+            the office via phone and reports his/her service issue. Often they turn up at the
+            office to report their request.
+        </p>
+        <p>
+            The volunteer gather the details from the member, and write down in a paper, and assigns
+            this job to a volunteer, who is available during the day. He/she creates an entry in the
+            spreadsheet for this request with status “Open” together with all the details he/she recorded in the paper.
+        </p>
+        <p>
+            The volunteer who creates a request allocation must allocate the request to the volunteer
+            who helps the members living in a specific area such as south of Brisbane, north of Brisbane,
+            east of Brisbane or west of Brisbane. Also, volunteer should not have many jobs assigned to
+            him/her to avoid the slow response time.
+        </p>
+        <p>
+            The volunteer contacts minimum three service providers via phone and negotiate a best price.
+            He/she writes down the detail of each negotiation to report to the member either by him/her
+            or another volunteer who is working during the preferred contact day/time of the member. A job
+            is always allocated to the service provider who has quoted the minimum price for the service.
+            The volunteer contacts the service provider again if the member accepts the offer and informs
+            the member’s address details together with contact phone and prefer day/time. He/she also changes
+            the request status to “Close.”
+        </p>
+        <p>
+            This system based on the paper and spreadsheet was working ok when the community members’ numbers
+            were less. However, now the system is broken with several issues identified.
+        </p>
+        <p>
+            Members have reported that they never know the status of the request they have made.
+            They can go days, sometimes weeks, without communication from the volunteers. In the eyes of members,
+            no communication means no one is working on their request. They feel often volunteer do not know how
+            to contact them to ask further questions or communicate progress. They often provide feedback about
+            a service provider’s poor service but they feel that it is not property recorded. Members also feel
+            that times to contact the volunteer is less, inconvenient and often when they contact either the phone
+            line is busy or no one responds.
+        </p>
+        <p>
+            The volunteers feel they are overloaded. The request information is kept in Excel spreadsheet.
+            Originally one or two volunteer were working but now there are several volunteers working independently.
+            Each volunteer need to look or update the spreadsheet with information regarding the request they are
+            allocated. The increasing numbers of the volunteers accessing the same spreadsheet causes the problems,
+            because only one person can open and close the spreadsheet at any given time. The volunteers are also
+            tired of constantly being called by the members wanting an update on the status of their request. Often
+            there are few volunteers on certain days/times as often some volunteers do not turn up due to their
+            personal problems during their time of service. There is also not adequate mechanism to record the
+            member’s feedback about a service provider service.
+        </p>
+        <p>
+            Obviously the current system is not working well any more as neither the members nor the volunteers
+            are happy with it. It is your job to come up with a system that addresses the needs of members and
+            the volunteers as mentioned above.
+        </p>
+	</div>
+	{% include "SmartCommunity_1622441019/footer.html" %}
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang="en">
+{% load static %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'SmartCommunity_1622441019/style_2.css' %}" />
+
+    <title>Smart Community</title>
+</head>
+
+<body>
+    <div id="header">
+			{% include "SmartCommunity_1622441019/header.html" %}
+            <h3> Help/FAQ </h3>
+    </div>
+	<div id="contentfirst">
+      <div class="helpItem">
+        <h2>Details of service provider are incorrect?</h2>
+              <ul>
+                <li>Contact our Admin at root@commnity.com</li>
+              </ul>
+      </div>
+
+      <div class="helpItem">
+        <h2>Cannot log in or make an account?</h2>
+              <ul>
+                <li>Contact our Admin at root@commnity.com</li>
+                <li>Follow the on screen instruction when logging in/signing up. If you have forgot please use the resent password option</li>
+              </ul>
+      </div>
+
+      <div class="helpItem">
+        <h2>Want to be the service provider of us?</h2>
+              <ul>
+                <li>Contact our Admin at root@commnity.com</li>
+                <li>Follow the on screen instruction when logging in/signing up. If you have forgot please use the resent password option</li>
+              </ul>
+      </div>
+	</div>
+    {% include "SmartCommunity_1622441019/footer.html" %}
+</body>
+</html>

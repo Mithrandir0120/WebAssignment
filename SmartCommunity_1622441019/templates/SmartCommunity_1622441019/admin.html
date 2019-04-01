@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+{% load static %}
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'SmartCommunity_1622441019/style_2.css' %}" />
+
+	<title>Smart Community</title>
+</head>
+
+
+<body>
+	<div id="header">
+			{% include "SmartCommunity_1622441019/header.html" %}
+			<h3> Login </h3>
+	</div>
+	<div id="contentfirst">
+		<div id="loginForm">
+			<div>
+			<form action="/admin/" method="post" id="adminform">
+				{% csrf_token %}
+				{% if not request.session.logged %}
+				{{ form.as_p }}
+				<input type="submit" value="Login"/>
+				{% elif request.session.logged  == 2 %}
+				</p><a href="/admin/create">Add new admin accounts</a>
+				</p><a href="/admin/add_info/">Add locations</a>
+				{% endif %}
+			</form>
+		    </div>
+        </div>
+    </div>
+{% include "SmartCommunity_1622441019/footer.html" %}
+</body>
+</html>
