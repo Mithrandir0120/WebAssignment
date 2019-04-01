@@ -2,6 +2,7 @@ import logging
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth import hashers
+from captcha.fields import CaptchaField
 
 
 from SmartCommunity_1622441019.models import User_1622441019, Provider_1622441019, Admin_1622441019
@@ -29,6 +30,7 @@ class AddInfo(ModelForm):
 class CreateAdmin(ModelForm):
     confirm = forms.CharField(label='Confirm password',
                               widget=forms.PasswordInput(attrs={'placeholder': 'Re-enter your password...'}))
+    captcha = CaptchaField(label='verification')
 
     class Meta:
         model = Admin_1622441019
@@ -84,6 +86,7 @@ class AdminModel(ModelForm):
 
 class LoginModel(ModelForm):
     rememberMe = forms.BooleanField(label="Remember me", required=False)
+    captcha = CaptchaField(label='verification')
 
     class Meta:
         model = User_1622441019
@@ -112,6 +115,7 @@ class LoginModel(ModelForm):
 class RegisterForm(ModelForm):
     confirm = forms.CharField(label='Confirm password',
                               widget=forms.PasswordInput(attrs={'placeholder': 'Re-enter your password...'}))
+    captcha = CaptchaField(label='verification')
 
     class Meta:
         model = User_1622441019
