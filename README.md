@@ -50,7 +50,7 @@
 ----------------
 
 >### 架构设计
-[![Smart Community](BrisbaneSmartCommunity.png)](BrisbaneSmartCommunity.xmind)
+[![Smart Community](BrisbaneSmartCommunity.png)](BrisbaneSmartCommunity.pdf)
 
 ----------------
 
