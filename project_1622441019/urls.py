@@ -18,6 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^', include('SmartCommunity_1622441019.urls')),
-    url(r'admin/', admin.site.urls),
-    url(r'^captcha', include('captcha.urls'))
+    url(r'root/', admin.site.urls),
+    url(r'^captcha', include('captcha.urls')),
 ]

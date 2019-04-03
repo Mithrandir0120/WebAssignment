@@ -5,7 +5,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="{% static 'SmartCommunity_1622441019/style_2.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'SmartCommunity_1622441019/style_1622441019.css' %}" />
 
 	<title>Smart Community</title>
 </head>
@@ -25,8 +25,8 @@
 				{{ form.as_p }}
 				<input type="submit" value="Login"/>
 				{% elif request.session.logged  == 2 %}
-				</p><a href="/admin/create">Add new admin accounts</a>
-				</p><a href="/admin/add_info/">Add locations</a>
+				<br><a href="/admin/create">Add new admin accounts</a>
+				<br><a href="/admin/add_info/">Add locations</a>
 				{% endif %}
 			</form>
 		    </div>

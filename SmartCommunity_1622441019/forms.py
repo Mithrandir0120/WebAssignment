@@ -30,7 +30,7 @@ class AddInfo(ModelForm):
 class CreateAdmin(ModelForm):
     confirm = forms.CharField(label='Confirm password',
                               widget=forms.PasswordInput(attrs={'placeholder': 'Re-enter your password...'}))
-    captcha = CaptchaField(label='verification')
+    captcha = CaptchaField(label='Verification')
 
     class Meta:
         model = Admin_1622441019
@@ -55,7 +55,7 @@ class CreateAdmin(ModelForm):
         if password != confirm:
             raise forms.ValidationError("Your passwords don't match.")
 
-        if Admin_1622441019.objects.filter(emailaddress__iexact=cleanedData.get("emailAddress")).exists():
+        if Admin_1622441019.objects.filter(emailAddress__iexact=cleanedData.get("emailAddress")).exists():
             raise forms.ValidationError("Username taken")
 
 
@@ -75,7 +75,7 @@ class AdminModel(ModelForm):
         cleanedData = super(AdminModel, self).clean()
         cUsername = cleanedData.get("emailAddress")
         try:
-            admin = Admin_1622441019.objects.get(emailaddress__iexact=cUsername)
+            admin = Admin_1622441019.objects.get(emailAddress__iexact=cUsername)
             if hashers.check_password(cleanedData.get("password"), admin.password):
                 logging.debug("test")
             else:
@@ -85,8 +85,8 @@ class AdminModel(ModelForm):
 
 
 class LoginModel(ModelForm):
+    captcha = CaptchaField(label='Verification')
     rememberMe = forms.BooleanField(label="Remember me", required=False)
-    captcha = CaptchaField(label='verification')
 
     class Meta:
         model = User_1622441019
@@ -115,7 +115,7 @@ class LoginModel(ModelForm):
 class RegisterForm(ModelForm):
     confirm = forms.CharField(label='Confirm password',
                               widget=forms.PasswordInput(attrs={'placeholder': 'Re-enter your password...'}))
-    captcha = CaptchaField(label='verification')
+    captcha = CaptchaField(label='Verification')
 
     class Meta:
         model = User_1622441019

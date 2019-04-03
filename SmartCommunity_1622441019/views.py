@@ -60,8 +60,9 @@ def admin(request):
     form = AdminModel(request.POST or None)
     if form.is_valid():
         instance = form.save(commit=False)
-        admin = Admin_1622441019.objects.get(emailaddress__iexact=instance.emailaddress)
+        admin = Admin_1622441019.objects.get(emailAddress__iexact=instance.emailAddress)
         request.session['logged'] = 2
+        request.session['admin'] = admin.emailAddress
         return HttpResponseRedirect('/')
     return render(request, 'SmartCommunity_1622441019/admin.html/', {'form': form})
 
