@@ -22,6 +22,14 @@ body {
 	margin: 0;
 }
 
+a:link{color:red;}
+
+a:visited{color:black;}
+
+a:hover{color:pink;}
+
+a:active{color:#ccc;}
+
 #header {
 	top: 0;
 	left: 0;
@@ -97,42 +105,6 @@ body {
 #menu a:hover {
 	background-color: #4D596E;
 }
-/*
-.dropdown i {
-	font-size: 35px;
-
-}
-.dropdown {
-    position: fixed;
-    display: inline-block;
-    float:right;
-   	margin-right: 10px;
-    z-index: 1;
-}
-
-.dropdown-content {
-	display: none;
-	border-radius: 4px;
-    position: fixed;
-    background-color: #C6C7BF;
-    min-width: 90px;
-    box-shadow: 0px 0px 5px #3E3E3B;
-    padding: 5px 7px;
-    z-index: 1;
-}
-
-.dropdown:hover .dropdown-content {
-	display: block;
-}
-
-.collapse.in {
-	display:block;
-}
-
-.collapse {
-	display:none;
-}
-*/
 
 #history {
 	display: block;
@@ -370,3 +342,4 @@ label {
 	padding: 25px 0;
 	display: block;
 }
+
