@@ -50,8 +50,8 @@ def createadmin(request):
 def info(request):
     form = AddInfo(request.POST or None)
     if form.is_valid():
-        location = form.save()
-        logging.debug(location.name)
+        serviceProvider = form.save()
+        logging.debug(serviceProvider.name)
         return HttpResponseRedirect('/')
     return render(request, 'SmartCommunity_1622441019/info.html/', {'form': form})
 
@@ -130,7 +130,7 @@ def provider(request, id):
     context = {
         'info': info,
     }
-    return render(request, 'SmartCommunity_1622441019/provider.html', context)
+    return render(request, 'SmartCommunity_1622441019/providerprofile.html', context)
 
 
 def searched(request):
@@ -154,3 +154,10 @@ def searched(request):
         'bool': bool,
     }
     return render(request, 'SmartCommunity_1622441019/result.html', context, {'form': form})
+
+
+# def profile(request):
+#
+#     pass
+#     return render(request, 'SmartCommunity_1622441019/profile.html', context)
+

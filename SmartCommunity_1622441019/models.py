@@ -78,5 +78,4 @@ class Provider_1622441019(models.Model):
                                    ('House', 'House'), ('Clean', 'Clean')), default=0)
 
     class Meta:
-        managed = False
         db_table = 'provider'
