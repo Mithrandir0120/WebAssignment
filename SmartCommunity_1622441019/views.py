@@ -8,7 +8,7 @@ from django.contrib.auth import hashers
 from django.db.models import Q
 
 from SmartCommunity_1622441019.forms import LoginModel, RegisterForm, AdminModel, EditProfile, CreateAdmin, SearchForm, AddInfo
-from SmartCommunity_1622441019.models import UserType_1622441019, Provider_1622441019, Admin_1622441019, User_1622441019
+from SmartCommunity_1622441019.models import UserType_1622441019, Admin_1622441019, User_1622441019, Provider_1622441019
 
 # Create your views here.
 
@@ -51,7 +51,7 @@ def info(request):
     form = AddInfo(request.POST or None)
     if form.is_valid():
         serviceProvider = form.save()
-        logging.debug(serviceProvider.name)
+        logging.debug(serviceProvider.providerName)
         return HttpResponseRedirect('/')
     return render(request, 'SmartCommunity_1622441019/info.html/', {'form': form})
 
@@ -63,7 +63,19 @@ def admin(request):
         admin = Admin_1622441019.objects.get(emailAddress__iexact=instance.emailAddress)
         request.session['logged'] = 2
         request.session['admin'] = admin.emailAddress
+        if form.cleaned_data["rememberMe"]:
+            request.session['remember'] = True
+        else:
+            request.session['remember'] = False
+        logging.debug((form.cleaned_data["rememberMe"]))
         return HttpResponseRedirect('/')
+    else:
+        try:
+            if request.session['remember']:
+                form.fields['emailsAddress'].initial = request.session['admin']
+                form.fields['rememberMe'].initial = True
+        except:
+            pass
     return render(request, 'SmartCommunity_1622441019/admin.html/', {'form': form})
 
 
@@ -108,7 +120,7 @@ def register(request):
 def user(request):
     form = EditProfile(request.POST or None)
     if form.is_valid():
-        user = UserType_1622441019.objects.get(emailAddress__iexact=request.session['user'])
+        user = User_1622441019.objects.get(emailAddress__iexact=request.session['user'])
         user.firstName = form.cleaned_data['firstName']
         user.lastName = form.cleaned_data['lastName']
         user.password = hashers.make_password(form.cleaned_data['password'])

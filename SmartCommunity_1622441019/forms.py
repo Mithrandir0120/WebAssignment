@@ -5,7 +5,7 @@ from django.contrib.auth import hashers
 from captcha.fields import CaptchaField
 
 
-from SmartCommunity_1622441019.models import User_1622441019, Provider_1622441019, Admin_1622441019
+from SmartCommunity_1622441019.models import User_1622441019, Admin_1622441019, Provider_1622441019
 
 
 class AddInfo(ModelForm):
@@ -60,6 +60,9 @@ class CreateAdmin(ModelForm):
 
 
 class AdminModel(ModelForm):
+    captcha = CaptchaField(label='Verification')
+    rememberMe = forms.BooleanField(label="Remember me", required=False)
+
     class Meta:
         model = Admin_1622441019
         fields = ['emailAddress', 'password']
@@ -77,10 +80,10 @@ class AdminModel(ModelForm):
         try:
             admin = Admin_1622441019.objects.get(emailAddress__iexact=cUsername)
             if hashers.check_password(cleanedData.get("password"), admin.password):
-                logging.debug("test")
+                logging.debug("rememberMe")
             else:
                 raise forms.ValidationError("Username or password incorrect")
-        except User_1622441019.DoesNotExist:
+        except Admin_1622441019.DoesNotExist:
             raise forms.ValidationError("Username or password incorrect")
 
 
