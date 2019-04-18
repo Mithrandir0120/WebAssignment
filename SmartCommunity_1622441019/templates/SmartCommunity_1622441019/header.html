@@ -2,15 +2,18 @@
 
 <div id="menu">
     {% if not request.session.logged %}
-    <a href="/login/"> Login </a>
-    <a href="/register/"> Register </a>
+        <a href="/login/"> Login </a>
+        <a href="/register/"> Register </a>
+        <a href="/admin/"> Admin </a>
     {% elif request.session.logged %}
-    <a href="/result/"> Search </a>
-    <a href="/help/"> Help </a>
-    <a href="/user"> Edit Profile </a>
+        <a href="/result/"> Search </a>
+        <a href="/user"> Edit Profile </a>
+        <a href="/help/"> Help </a>
         {% if request.session.logged  == 2 %}
             <a href="/admin/add_info"> Add Providers </a>
             <a href="/admin/create"> Create Admins </a>
+        {% elif request.session.logged == 1 %}
+            <a href="/addissue/"> Add new issue</a>
         {% endif %}
     <a href="/logout/"> Log out </a>
     {% endif %}

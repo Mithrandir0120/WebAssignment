@@ -16,4 +16,12 @@ urlpatterns = [
     url(r'^admin/create$', views.createadmin, name='createadmin'),
     url(r'^user/$', views.user, name='user'),
     url(r'^admin/add_info/$', views.info, name='info'),
+    url(r'^addissue/$', views.issue, name='createissue'),
+    url(r'^result/Volunteer/$', views.volunteer, name='Volunteer'),
+    url(r'^result/Member/$', views.member, name='Member'),
+    url(r'^result/Issue/$', views.allissue, name='Issue'),
+    url(r'^result/Provider/$', views.allprovider, name='Provider'),
+    url(r'^issue/(?P<id>\d+)/$', views.eachissue, name='eachissue'),
     ]
+
+

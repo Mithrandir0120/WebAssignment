@@ -7,8 +7,8 @@ from django.utils import timezone
 from django.contrib.auth import hashers
 from django.db.models import Q
 
-from SmartCommunity_1622441019.forms import LoginModel, RegisterForm, AdminModel, EditProfile, CreateAdmin, SearchForm, AddInfo
-from SmartCommunity_1622441019.models import UserType_1622441019, Admin_1622441019, User_1622441019, Provider_1622441019
+from SmartCommunity_1622441019.forms import *
+from SmartCommunity_1622441019.models import *
 
 # Create your views here.
 
@@ -44,7 +44,7 @@ def createadmin(request):
         instance = form.save()
         instance.password = hashers.make_password(instance.password)
         instance.save()
-    return render(request, 'SmartCommunity_1622441019/admincreate.html/', {'form': form})
+    return render(request, 'SmartCommunity_1622441019/admincreate.html', {'form': form})
 
 
 def info(request):
@@ -53,7 +53,16 @@ def info(request):
         serviceProvider = form.save()
         logging.debug(serviceProvider.providerName)
         return HttpResponseRedirect('/')
-    return render(request, 'SmartCommunity_1622441019/info.html/', {'form': form})
+    return render(request, 'SmartCommunity_1622441019/info.html', {'form': form})
+
+
+def issue(request):
+    form = AddIssue(request.POST or None)
+    if form.is_valid():
+        newIssue = form.save()
+        logging.debug(newIssue.issueName)
+        return HttpResponseRedirect('/')
+    return render(request, 'SmartCommunity_1622441019/addissue.html', {'form': form})
 
 
 def admin(request):
@@ -76,7 +85,7 @@ def admin(request):
                 form.fields['rememberMe'].initial = True
         except:
             pass
-    return render(request, 'SmartCommunity_1622441019/admin.html/', {'form': form})
+    return render(request, 'SmartCommunity_1622441019/admin.html', {'form': form})
 
 
 def login(request):
@@ -100,7 +109,7 @@ def login(request):
                 form.fields['rememberMe'].initial = True
         except:
             pass
-    return render(request, 'SmartCommunity_1622441019/login.html/', {'form': form})
+    return render(request, 'SmartCommunity_1622441019/login.html', {'form': form})
 
 
 def register(request):
@@ -154,7 +163,7 @@ def searched(request):
             lname = form.cleaned_data['Name']
             ltype = form.cleaned_data['Type']
             bool = True
-            filtered = Provider_1622441019.objects.filter(Q(name=lname) | Q(providerType=ltype))
+            filtered = Provider_1622441019.objects.filter(Q(providerName=lname) | Q(providerType=ltype))
         else:
             filtered = ""
     else:
@@ -168,8 +177,43 @@ def searched(request):
     return render(request, 'SmartCommunity_1622441019/result.html', context, {'form': form})
 
 
-# def profile(request):
-#
-#     pass
-#     return render(request, 'SmartCommunity_1622441019/profile.html', context)
+def volunteer(request):
+    volunteer_info = User_1622441019.objects.filter(userType='Volunteer')
+    context = {
+        'volunteer_info': volunteer_info,
+    }
+    return render(request, 'SmartCommunity_1622441019/volunteer.html', context)
+
+
+def member(request):
+    member_info = User_1622441019.objects.filter(userType='Member')
+    context = {
+        'member_info': member_info,
+    }
+    return render(request, 'SmartCommunity_1622441019/member.html', context)
+
+
+def allissue(request):
+    issue_info = Issue_1622441019.objects.all()
+    context = {
+        'issue_info': issue_info,
+    }
+    return render(request, 'SmartCommunity_1622441019/allissue.html', context)
+
+
+def allprovider(request):
+    provider_info = Provider_1622441019.objects.all()
+    context = {
+        'provider_info': provider_info,
+    }
+    return render(request, 'SmartCommunity_1622441019/provider.html', context)
+
+
+def eachissue(request, id):
+    info = Issue_1622441019.objects.get(issueID=id)
+    context = {
+        'info': info,
+    }
+    return render(request, 'SmartCommunity_1622441019/issueprofile.html', context)
+
 

@@ -5,7 +5,7 @@ from django.contrib.auth import hashers
 from captcha.fields import CaptchaField
 
 
-from SmartCommunity_1622441019.models import User_1622441019, Admin_1622441019, Provider_1622441019
+from SmartCommunity_1622441019.models import *
 
 
 class AddInfo(ModelForm):
@@ -24,6 +24,27 @@ class AddInfo(ModelForm):
                 'name': 'Provider name',
                 'phoneNumber': 'Phone number',
                 'providerType': 'Provider type',
+                'providerPrice': 'Price',
+            }
+
+
+class AddIssue(ModelForm):
+    class Meta:
+        model = Issue_1622441019
+        fields = '__all__'
+        widgets = {
+                'issueName': forms.TextInput(attrs={'placeholder': 'Enter a valid provider name.'}),
+                'address': forms.TextInput(attrs={'placeholder': 'Enter a valid address.'}),
+                'phoneNumber': forms.TextInput(attrs={'placeholder': 'Enter a valid phone number.'}),
+                'emailAddress': forms.EmailInput(attrs={'placeholder': 'Enter a valid e-mail.'}),
+                'issueDetail': forms.TextInput(attrs={'placeholder': 'Enter a valid price.'}),
+        }
+        labels = {
+                'issueName': 'Issue name',
+                'phoneNumber': 'Phone number',
+                'emailAddress': 'E-mail address',
+                'address': 'Address',
+                'issueDetail': 'Issue details',
             }
 
 
@@ -180,9 +201,9 @@ class SearchForm(forms.Form):
             raise forms.ValidationError("You need to enter something to search for a provider")
 
         try:
-            Provider_1622441019.objects.get(name=Name)
+            Provider_1622441019.objects.get(providerName=Name)
         except Provider_1622441019.DoesNotExist:
             try:
-                Provider_1622441019.objects.filter(locationtype=Type)[:1].get()
+                Provider_1622441019.objects.filter(providerType=Type)[:1].get()
             except Provider_1622441019.DoesNotExist:
-                raise forms.ValidationError("No locations match your search")
+                raise forms.ValidationError("No providers match your search")

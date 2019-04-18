@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 {% load static %}
 
 <head>
@@ -10,37 +10,30 @@
 	<title>Smart Community</title>
 </head>
 
-
 <body>
 	<div id="header">
 		{% include "SmartCommunity_1622441019/header.html" %}
-		<h3>Search</h3>
+		<h3>You're Viewing Provider Results</h3>
 	</div>
-
 	<div id="contentfirst">
-		<div id="selectContainer">
-			{% include "SmartCommunity_1622441019/viewas.html" %}
-			<hr>
-{#			<form id="search" method="post">#}
-{#				{% csrf_token %}#}
-{#				{{ form.Name }}#}
-{#				{{ form.Type }}#}
-{#				<input type="submit" value="Search"/>#}
-{#				{{ form.non_field_errors }}#}
-{#			</form>#}
-		</div>
 		<table>
-				{% if bool %}
-				<th class="left">Name</th>
-				<th class="left">Email</th>
-				<th>Phone</th>
-				<th>Type</th>
-				{% endif %}
-		</table>
+			<th class="left">Name</th>
+			<th class="left">Email</th>
+			<th>Phone</th>
+			<th>Type</th>
+
+        {% for item in provider_info %}
+        <tr>
+            <td class="left"><a href="/provider/{{ item.providerID }}">{{ item.providerName }}</a></td>
+            <td class="left">{{ item.emailAddress }}</td>
+            <td>{{ item.phoneNumber }}</td>
+            <td>{{ item.providerType }}</td>
+        </tr>
+        {% endfor %}
+        </table>
 	</div>
 	</p>
 
 	{% include "SmartCommunity_1622441019/footer.html" %}
 </body>
 </html>
-

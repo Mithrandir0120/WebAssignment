@@ -19,7 +19,7 @@
 				{% if request.session.logged == 1%}
 					<form method="post">
 					{% csrf_token %}
-					{{ form.as_table}}
+					{{ form.as_table }}
 					<input type="submit" value="Save changes"/>
 					</form>
 				{% else %}

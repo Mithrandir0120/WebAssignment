@@ -14,7 +14,11 @@
 			{% include "SmartCommunity_1622441019/header.html" %}
 			<h3> Welcome to Smart Community </h3>
 	</div>
+{#    <div id="welcomeimage">#}
+{#        <img src="https://www.aaeon.com/_media/ti_160310_wjfece.jpg">#}
+{#    </div>#}
 	<div id="welcome">
+        <img src="https://www.aaeon.com/_media/ti_160310_wjfece.jpg">
 		{% if request.session.logged == 1%}
 		<p/>Welcome {{ request.session.user }}.
 		<p/> You're a {{ request.session.type }}
@@ -22,7 +26,7 @@
 		<a href="/login/"> Login </a><p/>
 		<a href="/register/"> Register </a><p/>
 		{% elif request.session.logged == 2 %}
-		Welcome Administrator.
+		<p/>Welcome Administrator.
 		{% endif %}
 	</div>
 	{% include "SmartCommunity_1622441019/footer.html" %}
